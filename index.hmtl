@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dunia Kreatif - Ellya Insyirah Azmidar ✨</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Fredoka (Super Cute & Rounded) & Quicksand -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Quicksand', 'sans-serif'],
+                        cute: ['Fredoka', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#ff85a2', // Bubbly Soft Pink
+                            600: '#f43f5e', // Strawberry Rose
+                            700: '#be123c',
+                            900: '#881337',
+                        }
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 4s infinite',
+                        'wiggle': 'wiggle 1s ease-in-out infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                    },
+                    keyframes: {
+                        wiggle: {
+                            '0%, 100%': { transform: 'rotate(-3deg)' },
+                            '50%': { transform: 'rotate(3deg)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Fredoka', sans-serif;
+        }
+        /* Custom Scrollbar Soft Pink Theme */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fff5f6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #fda4af;
+            border-radius: 99px;
+            border: 2px solid #fff5f6;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff85a2;
+        }
+        .kawaii-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 3px solid #ffe4e6;
+            box-shadow: 0 8px 0px #fecdd3;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .kawaii-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 0px #fda4af;
+            border-color: #fda4af;
+        }
+        .sticker-hover {
+            transition: all 0.2s ease;
+        }
+        .sticker-hover:hover {
+            transform: scale(1.15) rotate(5deg);
+            filter: drop-shadow(0 5px 5px rgba(251, 113, 133, 0.2));
+        }
+    </style>
+</head>
+<body class="bg-[#FFF5F6] text-slate-700 antialiased selection:bg-brand-200 selection:text-brand-900 overflow-x-hidden">
+
+    <!-- Cute Background Decorations (Sakura & Sparkles) -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <!-- Floating Sparkle SVGs -->
+        <svg class="absolute top-20 left-[5%] text-brand-300 w-12 h-12 animate-bounce-slow" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+        <svg class="absolute bottom-20 right-[8%] text-pink-300 w-8 h-8 animate-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+        <svg class="absolute top-1/2 left-[80%] text-brand-200 w-10 h-10 animate-spin-slow" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9h-2a7 7 0 1 1-7-7V3z"/></svg>
+    </div>
+
+    <!-- Right Bottom Sticky Control Hub -->
+    <div class="fixed right-6 bottom-6 z-50 flex flex-col gap-3">
+        <!-- Live Customizer Toggle Button -->
+        <button id="customizer-btn" class="w-14 h-14 bg-brand-500 hover:bg-brand-600 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition duration-300 group border-4 border-white" title="Kustomisasi Portofolio">
+            <i class="fa-solid fa-wand-magic-sparkles text-xl group-hover:rotate-12 transition"></i>
+        </button>
+        <!-- Scroll to Top Button -->
+        <button id="scroll-top-btn" class="w-14 h-14 bg-white text-brand-500 rounded-full flex items-center justify-center shadow-lg hover:bg-brand-5 transition duration-300 opacity-0 pointer-events-none border-4 border-brand-100" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+            <i class="fa-solid fa-chevron-up text-xl"></i>
+        </button>
+    </div>
+
+    <!-- Cute Toast Notification -->
+    <div id="toast" class="fixed top-6 right-6 z-[100] transform translate-y-[-150%] transition-transform duration-300 ease-out flex items-center gap-3 p-4 rounded-2xl shadow-xl border-3 border-brand-300 bg-white text-slate-800 max-w-sm">
+        <div id="toast-icon-wrapper" class="w-10 h-10 rounded-full flex items-center justify-center text-brand-500 bg-brand-100">
+            <i id="toast-icon" class="fa-solid fa-face-smile-wink text-lg animate-bounce"></i>
+        </div>
+        <div>
+            <p id="toast-message" class="text-sm font-semibold text-slate-850">Halo! Semoga harimu menyenangkan! 💕</p>
+        </div>
+    </div>
+
+    <!-- Live Customizer Panel Drawer -->
+    <div id="customizer-panel" class="fixed top-0 right-0 h-full w-full sm:w-[450px] bg-[#FFF8F9] border-l-4 border-brand-200 shadow-2xl z-[60] transform translate-x-full transition-transform duration-300 overflow-y-auto p-6 text-slate-800">
+        <div class="flex items-center justify-between border-b-2 border-brand-100 pb-4 mb-6">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-magic text-brand-500 text-xl animate-bounce"></i>
+                <h3 class="text-xl font-bold text-brand-600">Dandani Portofoliomu ✨</h3>
+            </div>
+            <button id="close-customizer" class="text-slate-400 hover:text-brand-500 transition">
+                <i class="fa-solid fa-circle-xmark text-2xl"></i>
+            </button>
+        </div>
+
+        <p class="text-xs text-brand-600 mb-6 bg-brand-50/50 p-4 rounded-2xl border-2 border-brand-100">
+            🎀 Ubah isian di bawah ini! Portofoliomu langsung berubah seketika. Jika sudah puas, klik tombol unduh untuk mendapatkan file web jadinya!
+        </p>
+
+        <div class="space-y-5">
+            <!-- Profile Info Section -->
+            <div class="bg-white p-4 rounded-2xl border-2 border-brand-100 shadow-sm">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-500 block mb-3">🌸 Profil Ellya</span>
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-xs text-slate-500 mb-1 font-semibold">Nama Lengkap</label>
+                        <input id="input-name" type="text" value="Ellya Insyirah Azmidar" class="w-full bg-slate-50 border-2 border-brand-100 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-brand-400 font-semibold text-slate-700">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-500 mb-1 font-semibold">Status / Peran</label>
+                        <input id="input-role" type="text" value="Civil Engineering Student | Construction Management & Visual Artist" class="w-full bg-slate-50 border-2 border-brand-100 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-brand-400 text-slate-700">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-500 mb-1 font-semibold">Deskripsi Singkat (Hero)</label>
+                        <textarea id="input-hero-desc" rows="3" class="w-full bg-slate-50 border-2 border-brand-100 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-brand-400 text-slate-700">Mahasiswi Manajemen Jasa Konstruksi PNUP yang menggabungkan presisi keteknisipilan dengan kepekaan estetika seni visual, gambar proyeksi, dan restorasi digital.</textarea>
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-500 mb-1 font-semibold">Nama File Foto Profil</label>
+                        <input id="input-avatar" type="text" value="webcam-toy-photo1.jpg" class="w-full bg-slate-50 border-2 border-brand-100 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-brand-400 text-slate-700">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Media & Contact Section -->
+            <div class="bg-white p-4 rounded-2xl border-2 border-brand-100 shadow-sm">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-500 block mb-3">📬 Hubungi Ellya</span>
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-xs text-slate-500 mb-1 font-semibold">Alamat Email</label>
+                        <input id="input-email" type="email" value="ellyainsyirah16@gmail.com" class="w-full bg-slate-50 border-2 border-brand-100 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-brand-400 text-slate-700">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-500 mb-1 font-semibold">Asal Daerah</label>
+                        <input id="input-location" type="text" value="Sinjai, Sulawesi Selatan" class="w-full bg-slate-50 border-2 border-brand-100 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-brand-400 text-slate-700">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Export Code Button -->
+            <div class="pt-4">
+                <button id="download-html-btn" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-4 px-4 rounded-2xl flex items-center justify-center gap-2 shadow-md hover:shadow-xl hover:scale-[1.02] transition-all border-b-4 border-brand-600">
+                    <i class="fa-solid fa-cloud-arrow-down text-lg"></i>
+                    Unduh Web Imutmu! (.HTML)
+                </button>
+                <p class="text-center text-[10px] text-brand-400 mt-2 font-semibold">
+                    Simpan file ini untuk dibagikan ke teman-temanmu secara gratis! 💕
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Cute Navigation Bar -->
+    <header class="fixed top-0 left-0 w-full z-40 transition-all duration-300" id="main-header">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold tracking-wider text-brand-600 flex items-center gap-2">
+                <span class="w-4 h-4 rounded-full bg-pink-400 animate-ping absolute"></span>
+                <span class="w-4 h-4 rounded-full bg-brand-500 relative border-2 border-white"></span>
+                <span id="nav-brand-name">ELLYAINSYIRAH 🎀</span>
+            </a>
+            
+            <!-- Desktop Navbar Links -->
+            <nav class="hidden md:flex items-center gap-6 text-sm font-bold">
+                <a href="#tentang" class="text-slate-600 hover:text-brand-500 transition py-1.5 px-3 rounded-full hover:bg-brand-50/50">Tentang</a>
+                <a href="#keahlian" class="text-slate-600 hover:text-brand-500 transition py-1.5 px-3 rounded-full hover:bg-brand-50/50">Keahlian imut</a>
+                <a href="#portfolio" class="text-slate-600 hover:text-brand-500 transition py-1.5 px-3 rounded-full hover:bg-brand-50/50">Galeri Studi</a>
+                <a href="#kontak" class="text-slate-600 hover:text-brand-500 transition py-1.5 px-3 rounded-full hover:bg-brand-50/50">Sapa Ellya</a>
+                <a href="#kontak" class="bg-brand-500 text-white border-2 border-white shadow-md hover:bg-brand-600 px-5 py-2 rounded-full transition-all duration-300 hover:scale-105">Hubungi Saya ✉️</a>
+            </nav>
+
+            <!-- Mobile Burger Menu Button -->
+            <button id="mobile-menu-toggle" class="md:hidden text-brand-500 hover:text-brand-600 focus:outline-none transition">
+                <i class="fa-solid fa-bars-staggered text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-[#FFF5F6] border-b-4 border-brand-100 px-6 py-6 space-y-4 shadow-xl text-center">
+            <a href="#tentang" class="block text-slate-600 hover:text-brand-500 py-2 text-base font-bold">Tentang</a>
+            <a href="#keahlian" class="block text-slate-600 hover:text-brand-500 py-2 text-base font-bold">Keahlian Imut</a>
+            <a href="#portfolio" class="block text-slate-600 hover:text-brand-500 py-2 text-base font-bold">Galeri Studi</a>
+            <a href="#kontak" class="block text-slate-600 hover:text-brand-500 py-2 text-base font-bold">Sapa Ellya</a>
+            <a href="#kontak" class="block text-center bg-brand-500 text-white py-2.5 rounded-full text-base font-bold">Hubungi Saya ✉️</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-16 md:pt-40 md:pb-28 overflow-hidden flex items-center min-h-screen">
+        <!-- Floating Clouds (SVGs) -->
+        <div class="absolute top-24 left-[10%] w-24 h-12 opacity-80 animate-bounce-slow">
+            <svg class="text-white" fill="currentColor" viewBox="0 0 100 50"><path d="M20 30a15 15 0 0 1 14-14 10 10 0 0 1 12-2 15 15 0 0 1 28 4 15 15 0 0 1 6 27H20z"/></svg>
+        </div>
+        <div class="absolute bottom-28 right-[10%] w-32 h-16 opacity-70 animate-pulse-slow">
+            <svg class="text-white" fill="currentColor" viewBox="0 0 100 50"><path d="M20 30a15 15 0 0 1 14-14 10 10 0 0 1 12-2 15 15 0 0 1 28 4 15 15 0 0 1 6 27H20z"/></svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 w-full relative z-10 mt-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Content: Texts -->
+                <div class="lg:col-span-6 space-y-6 text-center lg:text-left relative">
+                    <!-- Cute Floating Heart Sticker -->
+                    <div class="absolute -top-12 -left-4 w-12 h-12 text-brand-300 animate-bounce-slow sticker-hover">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100 border-2 border-brand-200 text-brand-600 text-xs md:text-sm font-bold tracking-wide uppercase mx-auto lg:mx-0 shadow-sm animate-wiggle">
+                        🎀 Mahasiswi Teknik Sipil PNUP (MJK 1D)
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-brand-600">
+                        Hai, Aku <span id="hero-name" class="bg-gradient-to-r from-brand-500 via-brand-600 to-pink-500 bg-clip-text text-transparent font-cute">Ellya Insyirah Azmidar</span> ✨
+                    </h1>
+                    <h2 id="hero-role" class="text-base sm:text-lg font-bold text-slate-600 bg-brand-100/50 p-2.5 rounded-2xl inline-block">
+                        Civil Engineering Student & Creative Artist 🌸
+                    </h2>
+                    <p id="hero-desc" class="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                        Mahasiswi Manajemen Jasa Konstruksi PNUP yang menggabungkan presisi keteknisipilan dengan kepekaan estetika seni visual, gambar proyeksi, dan restorasi digital.
+                    </p>
+
+                    <!-- Interactive CTAs -->
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#portfolio" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-bold transition-all shadow-md hover:shadow-xl hover:scale-105 border-b-4 border-brand-600">
+                            Lihat Studio Ellya 🎨
+                        </a>
+                        <a href="#kontak" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-brand-500 font-bold hover:bg-brand-5 transition border-2 border-brand-200 shadow-md">
+                            Sapa Ellya 👋
+                        </a>
+                    </div>
+
+                    <!-- Cute Custom Socials -->
+                    <div class="flex justify-center lg:justify-start gap-3 pt-4">
+                        <a id="social-github-link" href="https://github.com" target="_blank" class="w-12 h-12 rounded-full bg-white border-2 border-brand-100 flex items-center justify-center text-brand-400 hover:text-brand-500 hover:scale-110 transition text-lg shadow-sm" title="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a id="social-linkedin-link" href="https://linkedin.com" target="_blank" class="w-12 h-12 rounded-full bg-white border-2 border-brand-100 flex items-center justify-center text-brand-400 hover:text-brand-500 hover:scale-110 transition text-lg shadow-sm" title="LinkedIn">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                        <a id="social-email-link" href="mailto:ellyainsyirah16@gmail.com" class="w-12 h-12 rounded-full bg-white border-2 border-brand-100 flex items-center justify-center text-brand-400 hover:text-brand-500 hover:scale-110 transition text-lg shadow-sm" title="Email Direct">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Content: Profile Image styled like Polaroid + Cute Mascot Doodle -->
+                <div class="lg:col-span-6 flex flex-col items-center justify-center relative">
+                    
+                    <!-- Cute Kawaii Cat Wear construction helmet doodle in corner -->
+                    <div class="absolute -top-12 right-12 w-28 h-28 z-20 animate-bounce-slow pointer-events-none filter drop-shadow-md">
+                        <!-- Custom SVG Kawaii Kitten with Pink Construction Helmet -->
+                        <svg viewBox="0 0 100 100" class="w-full h-full">
+                            <!-- Ears -->
+                            <polygon points="20,40 30,15 45,35" fill="#ffb7c5"/>
+                            <polygon points="80,40 70,15 55,35" fill="#ffb7c5"/>
+                            <!-- Face -->
+                            <ellipse cx="50" cy="55" rx="35" ry="30" fill="#ffffff" stroke="#fb7185" stroke-width="3"/>
+                            <!-- Pink Construction Helmet -->
+                            <path d="M 17,45 A 35,35 0 0,1 83,45 Z" fill="#ff85a2" stroke="#fb7185" stroke-width="3"/>
+                            <rect x="44" y="15" width="12" height="15" rx="3" fill="#ff85a2" stroke="#fb7185" stroke-width="3"/>
+                            <ellipse cx="50" cy="35" rx="5" ry="5" fill="#ffffff"/>
+                            <!-- Cat Face Elements -->
+                            <!-- Eyes -->
+                            <ellipse cx="38" cy="55" rx="4" ry="4" fill="#334155"/>
+                            <ellipse cx="62" cy="55" rx="4" ry="4" fill="#334155"/>
+                            <!-- Cheeks -->
+                            <ellipse cx="32" cy="62" rx="4" ry="2" fill="#fda4af"/>
+                            <ellipse cx="68" cy="62" rx="4" ry="2" fill="#fda4af"/>
+                            <!-- Mouth -->
+                            <path d="M 46,62 Q 50,65 54,62" fill="none" stroke="#334155" stroke-width="2"/>
+                            <!-- Cute Hat Logo -->
+                            <path d="M 48,32 L 52,32 M 50,30 L 50,34" stroke="#ffb7c5" stroke-width="2"/>
+                        </svg>
+                    </div>
+
+                    <!-- Polaroid Photo Container -->
+                    <div class="relative bg-white p-4 pb-12 rounded-xl shadow-2xl border-2 border-brand-100 rotate-2 hover:rotate-0 transition-transform duration-500 max-w-sm">
+                        <!-- Top Tape Dec -->
+                        <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-28 h-8 bg-pink-200/60 -rotate-3 border border-pink-300 border-dashed"></div>
+                        
+                        <!-- Main Polaroid Screen -->
+                        <div class="w-64 h-64 sm:w-72 sm:h-72 overflow-hidden rounded-lg bg-slate-100 relative group">
+                            <!-- Show uploaded image webcam-toy-photo1.jpg -->
+                            <img id="profile-img" src="webcam-toy-photo1.jpg" alt="Foto Ellya Insyirah Azmidar" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=500&auto=format&fit=crop';">
+                        </div>
+
+                        <!-- Cute polaroid caption -->
+                        <div class="absolute bottom-2.5 left-0 w-full text-center">
+                            <span class="text-sm font-bold text-brand-600 font-cute italic">✨ Ellya Insyirah ✨</span>
+                        </div>
+
+                        <!-- Sparkles stickers on photo frame -->
+                        <div class="absolute -bottom-4 -left-4 w-12 h-12 text-yellow-400 animate-spin-slow">
+                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+                        </div>
+                    </div>
+
+                    <!-- Cute Polaroid Floating Sticker Badge -->
+                    <div class="absolute bottom-0 right-4 bg-[#FFD1DC] border-3 border-white px-4 py-2 rounded-2xl flex items-center gap-2 shadow-lg rotate-12 hover:-rotate-12 transition-transform duration-300">
+                        <span class="text-xl">🛠️</span>
+                        <div class="text-left">
+                            <p class="text-[10px] text-brand-600 font-bold uppercase tracking-wider">MJK 1D</p>
+                            <p class="text-xs font-black text-slate-800">Ujung Pandang</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="tentang" class="py-20 bg-white/60 border-t-4 border-brand-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- About Me Text Info -->
+                <div class="space-y-6">
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-500 block">🌸 Tentang Ellya</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-brand-600">Teknik Sipil Tapi Bikin Dunia Jadi Estetik & Cute! 🎀</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        Halo! Aku **Ellya Insyirah Azmidar**, asalku dari **Sinjai, Sulawesi Selatan**. Saat ini aku menempuh petualangan baru di **Politeknik Negeri Ujung Pandang (PNUP)**, Jurusan **Teknik Sipil**, Program Studi **D4 Manajemen Jasa Konstruksi (MJK)**, Kelas 1D.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        Walau dunia keteknisipilan penuh dengan hitung-hitungan beton, beban mekanika, dan geoteknik, jiwaku tetap penuh warna dan kreativitas! Aku gemar **menggambar bebas, meracik masakan baru, dan restorasi digital** (seperti membuat foto buram kembali tajam). Bagiku, menghitung reaksi tumpuan dan menggambar isometrik 3D adalah seni presisi yang sangat mengasyikkan!
+                    </p>
+
+                    <!-- Fun facts / Personal Info styled like kawaii stamp cards -->
+                    <div class="grid grid-cols-2 gap-4 pt-4 border-t-2 border-brand-100">
+                        <div class="bg-[#FFF5F6] p-3 rounded-2xl border-2 border-brand-100">
+                            <p class="text-xs text-brand-500 uppercase font-bold">Sinjai, Sulsel</p>
+                            <p class="text-xs font-bold text-slate-800">Kota Tercinta 🏡</p>
+                        </div>
+                        <div class="bg-[#FFF5F6] p-3 rounded-2xl border-2 border-brand-100">
+                            <p class="text-xs text-brand-500 uppercase font-bold">D4 MJK Kelas 1D</p>
+                            <p class="text-xs font-bold text-slate-800">PNUP - Kampus Hijau 🏫</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adorable Visual Timeline -->
+                <div class="space-y-8 bg-white p-6 sm:p-8 rounded-[2rem] border-4 border-brand-100 shadow-lg relative overflow-hidden">
+                    <!-- Heart shaped decorative patch in bg -->
+                    <div class="absolute -right-12 -bottom-12 w-40 h-40 bg-brand-50 opacity-40 rounded-full animate-pulse"></div>
+
+                    <h4 class="text-lg font-bold text-brand-600 flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-brand-500 animate-bounce"></i>
+                        Petualangan Studi Ellya
+                    </h4>
+                    
+                    <div class="relative border-l-4 border-dashed border-brand-200 pl-6 space-y-10">
+                        <!-- Item 1 -->
+                        <div class="relative">
+                            <span class="absolute -left-[35px] top-1.5 w-5 h-5 rounded-full bg-brand-400 border-4 border-white shadow-md"></span>
+                            <span class="text-xs text-brand-500 font-semibold block mb-1">Studi Saat Ini</span>
+                            <h5 class="text-sm sm:text-base font-bold text-slate-800">D4 Manajemen Jasa Konstruksi (PNUP)</h5>
+                            <p class="text-slate-500 text-xs mt-1">
+                                Belajar mendesain jembatan kokoh, menganalisis tanah pondasi, hingga memahami gambar proyeksi isometrik 3D.
+                            </p>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="relative">
+                            <span class="absolute -left-[35px] top-1.5 w-5 h-5 rounded-full bg-pink-300 border-4 border-white shadow-md"></span>
+                            <span class="text-xs text-brand-500 font-semibold block mb-1">Dunia Hobi & Seni</span>
+                            <h5 class="text-sm sm:text-base font-bold text-slate-800">Seni Gambar, Kuliner, & Editing Digital</h5>
+                            <p class="text-slate-500 text-xs mt-1">
+                                Mengembangkan imajinasi visual lewat gambar sketsa, bereksperimen di dapur, dan restorasi foto resolusi HD.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Academic Focus Section (Styled Cute with Blushing Icons) -->
+    <section id="keahlian" class="py-20">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <span class="text-xs font-bold uppercase tracking-widest text-brand-500 block mb-3">🌸 Menu Kekuatanku</span>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-brand-600 mb-4">Keahlian Kerenku ✨</h3>
+            <p class="text-slate-500 max-w-xl mx-auto mb-16 text-sm">
+                Kombinasi sains keteknisipilan dengan kesenian visual imut yang aku asah setiap harinya!
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                <!-- Skill 1 -->
+                <div class="kawaii-card p-6 rounded-3xl space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-orange-100 text-orange-400 flex items-center justify-center text-2xl border-2 border-orange-200">
+                        📐
+                    </div>
+                    <div>
+                        <h4 class="text-base font-bold text-slate-800">Mekanika Rekayasa</h4>
+                        <p class="text-xs text-slate-500 mt-1">Analisis gaya dalam, reaksi perletakan balok tumpuan, dan perhitungan beban merata.</p>
+                    </div>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="kawaii-card p-6 rounded-3xl space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-400 flex items-center justify-center text-2xl border-2 border-brand-200">
+                        🎨
+                    </div>
+                    <div>
+                        <h4 class="text-base font-bold text-slate-800">Gambar Teknik & Isometrik</h4>
+                        <p class="text-xs text-slate-500 mt-1">Mengubah proyeksi tampak ortogonal menjadi bentuk 3D isometrik secara presisi dan rapi.</p>
+                    </div>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="kawaii-card p-6 rounded-3xl space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-400 flex items-center justify-center text-2xl border-2 border-sky-200">
+                        🌱
+                    </div>
+                    <div>
+                        <h4 class="text-base font-bold text-slate-800">Mekanika Tanah (Geoteknik)</h4>
+                        <p class="text-xs text-slate-500 mt-1">Studi Proctor test laboratorium, analisis triaxial, dan kalkulasi Lingkaran Mohr.</p>
+                    </div>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="kawaii-card p-6 rounded-3xl space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-pink-100 text-pink-400 flex items-center justify-center text-2xl border-2 border-pink-200">
+                        🧸
+                    </div>
+                    <div>
+                        <h4 class="text-base font-bold text-slate-800">Digital Visual & Restorasi</h4>
+                        <p class="text-xs text-slate-500 mt-1">Meningkatkan kualitas foto buram menjadi tajam (HD) dengan menjaga proporsi rasio asli.</p>
+                    </div>
+                </div>
+
+                <!-- Skill 5 -->
+                <div class="kawaii-card p-6 rounded-3xl space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-yellow-100 text-yellow-500 flex items-center justify-center text-2xl border-2 border-yellow-200">
+                        🔢
+                    </div>
+                    <div>
+                        <h4 class="text-base font-bold text-slate-800">Matematika & Kalkulus</h4>
+                        <p class="text-xs text-slate-500 mt-1">Penyelesaian soal matematika rekayasa termasuk pemecahan persamaan fungsi limit.</p>
+                    </div>
+                </div>
+
+                <!-- Skill 6 -->
+                <div class="kawaii-card p-6 rounded-3xl space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-violet-100 text-violet-400 flex items-center justify-center text-2xl border-2 border-violet-200">
+                        📑
+                    </div>
+                    <div>
+                        <h4 class="text-base font-bold text-slate-800">Rangkuman Materi & PPT</h4>
+                        <p class="text-xs text-slate-500 mt-1">Merangkum Karya Tulis Ilmiah menjadi rancangan bahan presentasi yang sistematis dan estetik.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Gallery Portfolio Section (Cute & Colorful Cards) -->
+    <section id="portfolio" class="py-20 bg-white/60 border-t-4 border-brand-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div class="text-left">
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-500 block mb-3">🧸 Galeri Studi Kasus</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-brand-600">Koleksi Tugas & Karya Imutku 🌸</h3>
+                </div>
+                
+                <!-- Category Filters -->
+                <div class="flex flex-wrap gap-2">
+                    <button class="filter-btn px-4 py-2 rounded-full text-xs font-bold tracking-wide bg-brand-500 text-white shadow-md" data-category="all">Semua Karya</button>
+                    <button class="filter-btn px-4 py-2 rounded-full text-xs font-bold tracking-wide bg-[#FFF5F6] text-slate-500 hover:bg-brand-100 hover:text-brand-600 border-2 border-brand-100" data-category="sipil">Teknik Sipil 🧱</button>
+                    <button class="filter-btn px-4 py-2 rounded-full text-xs font-bold tracking-wide bg-[#FFF5F6] text-slate-500 hover:bg-brand-100 hover:text-brand-600 border-2 border-brand-100" data-category="seni">Seni Visual 🎨</button>
+                </div>
+            </div>
+
+            <!-- Dynamic Project Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                
+                <!-- Project Card 1 (Sipil) -->
+                <div class="project-card group bg-white border-3 border-brand-100 rounded-[2rem] overflow-hidden shadow-lg hover:border-brand-300 transition duration-300" data-category="sipil">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=600&auto=format&fit=crop" alt="Mekanika Rekayasa" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-4 right-4 bg-orange-400 text-white text-[10px] font-bold px-3 py-1 rounded-full">Analisis Struktur</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h4 class="text-base font-bold text-slate-800 font-cute">Analisis Balok Sederhana & Gaya</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Studi menghitung reaksi tumpuan dan diagram gaya dalam (momen, lintang, normal) untuk konstruksi balok statis tertentu.</p>
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="text-[10px] px-2 py-0.5 rounded bg-brand-50 text-brand-600 font-semibold">Mekrek 1</span>
+                            <span class="text-[10px] px-2 py-0.5 rounded bg-brand-50 text-brand-600 font-semibold">Gaya Dalam</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 (Seni) -->
+                <div class="project-card group bg-white border-3 border-brand-100 rounded-[2rem] overflow-hidden shadow-lg hover:border-brand-300 transition duration-300" data-category="seni">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=600&auto=format&fit=crop" alt="Seni Menggambar" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-4 right-4 bg-brand-500 text-white text-[10px] font-bold px-3 py-1 rounded-full">Hand Drawing</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h4 class="text-base font-bold text-slate-800 font-cute">Rancangan Perspektif & Sketsa Lucu</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Eksperimen seni menggambar manual, melatih proporsi dimensi ruang, bayangan estetan, dan goresan pensil imajinatif.</p>
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="text-[10px] px-2 py-0.5 rounded bg-brand-50 text-brand-600 font-semibold">Seni Rupa</span>
+                            <span class="text-[10px] px-2 py-0.5 rounded bg-brand-50 text-brand-600 font-semibold">Sketsa Pensil</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 (Sipil) -->
+                <div class="project-card group bg-white border-3 border-brand-100 rounded-[2rem] overflow-hidden shadow-lg hover:border-brand-300 transition duration-300" data-category="sipil">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=600&auto=format&fit=crop" alt="Gambar Teknik" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-4 right-4 bg-sky-400 text-white text-[10px] font-bold px-3 py-1 rounded-full">Proyeksi Isometrik</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h4 class="text-base font-bold text-slate-800 font-cute">Gambar Proyeksi Ortogonal ke 3D</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Menerjemahkan bentuk tampak (depan, atas, samping) menjadi bangun ruang isometrik 3D yang presisi sesuai standar gambar teknik.</p>
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="text-[10px] px-2 py-0.5 rounded bg-brand-50 text-brand-600 font-semibold">Gambar Teknik</span>
+                            <span class="text-[10px] px-2 py-0.5 rounded bg-brand-50 text-brand-600 font-semibold">Isometrik 3D</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 (Sipil) -->
+                <div class="project-card group bg-white border-3 border-brand-100 rounded-[2rem] overflow-hidden shadow-lg hover:border-brand-300 transition duration-300" data-category="sipil">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="https://images.unsplash.com/photo-1578345218746-50a229b3d0f8?q=80&w=600&auto=format&fit=crop" alt="Geoteknik" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-4 right-4 bg-emerald-400 text-white text-[10px] font-bold px-3 py-1 rounded-full">Kadar Air Optimum</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h4 class="text-base font-bold text-slate-800 font-cute">Uji Geoteknik & Kompaktibilitas</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Studi pengujian tanah meliputi pemodelan Lingkaran Mohr triaxial serta parameter Proctor test untuk kepadatan kering maksimum.</p>
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="text-[10px] px-2 py-0.5 rounded bg-brand-50 text-brand-600 font-semibold">Mekanika Tanah</span>
+                            <span class="text-[10px] px-2 py-0.5 rounded bg-brand-50 text-brand-600 font-semibold">Lab Test</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 5 (Seni) -->
+                <div class="project-card group bg-white border-3 border-brand-100 rounded-[2rem] overflow-hidden shadow-lg hover:border-brand-300 transition duration-300" data-category="seni">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop" alt="Restorasi Foto" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-4 right-4 bg-pink-400 text-white text-[10px] font-bold px-3 py-1 rounded-full">Editing Visual</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h4 class="text-base font-bold text-slate-800 font-cute">Eksperimen Restorasi Citra Foto</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Peningkatan kualitas visual foto lama atau buram menjadi beresolusi HD tanpa mengubah atau merusak bentuk wajah asli.</p>
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="text-[10px] px-2 py-0.5 rounded bg-brand-50 text-brand-600 font-semibold">Restorasi</span>
+                            <span class="text-[10px] px-2 py-0.5 rounded bg-brand-50 text-brand-600 font-semibold">Retouch</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontak" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                
+                <!-- Left: Contact Details -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div class="space-y-4">
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand-500 block">📬 Hubungi Aku</span>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-brand-600">Ayo Berteman & Diskusi Ide Seru! 💕</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Apakah kamu mau tanya-tanya seputar mekanika rekayasa, gambar teknik isometrik, atau sekadar bertukar resep makanan manis? Kirim pesanmu lewat form di samping atau hubungi e-mail-ku ya!
+                        </p>
+                    </div>
+
+                    <!-- Direct Contact Cards -->
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 p-4 rounded-3xl bg-white border-3 border-brand-100 shadow-sm">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-500 flex items-center justify-center text-xl border-2 border-brand-100">
+                                💌
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-slate-450 font-bold uppercase tracking-wider">Email Utama</p>
+                                <p id="contact-email-text" class="text-xs sm:text-sm font-bold text-slate-800">ellyainsyirah16@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-3xl bg-white border-3 border-brand-100 shadow-sm">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-500 flex items-center justify-center text-xl border-2 border-brand-100">
+                                🏡
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-slate-450 font-bold uppercase tracking-wider">Asal & Kampus</p>
+                                <p id="contact-location-text" class="text-xs sm:text-sm font-bold text-slate-800">Sinjai / Makassar, Sulawesi Selatan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Contact Form (Styled with Cute Rounded Borders) -->
+                <div class="lg:col-span-7 bg-white border-3 border-brand-100 p-8 rounded-[2rem] shadow-xl relative">
+                    <form id="contact-form" class="space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Nama Kamu</label>
+                                <input type="text" id="form-name" required class="w-full bg-[#FFFBFB] border-2 border-brand-100 rounded-2xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-brand-400 transition font-medium" placeholder="Contoh: Sarah">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Alamat Email</label>
+                                <input type="email" id="form-email" required class="w-full bg-[#FFFBFB] border-2 border-brand-100 rounded-2xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-brand-400 transition font-medium" placeholder="Contoh: sarah@email.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Subjek Pesan</label>
+                            <input type="text" id="form-subject" required class="w-full bg-[#FFFBFB] border-2 border-brand-100 rounded-2xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-brand-400 transition font-medium" placeholder="Diskusi tugas kuliah, kolaborasi, sapa Ellya...">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Isi Pesan</label>
+                            <textarea id="form-message" rows="4" required class="w-full bg-[#FFFBFB] border-2 border-brand-100 rounded-2xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-brand-400 transition font-medium" placeholder="Tuliskan ide diskusi atau obrolan manismu di sini..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all border-b-4 border-brand-600 hover:scale-[1.01]">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Kirim Surat Ceria 💌
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-white border-t-4 border-brand-100 py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="text-center sm:text-left">
+                <a href="#" class="text-lg font-bold tracking-wider text-brand-600 block mb-2">ELLYAINSYIRAH 🎀</a>
+                <p class="text-xs text-slate-400">&copy; <span id="current-year">2026</span> - Dibuat dengan Cinta, Sakura, & Strawberry.</p>
+            </div>
+            <div class="flex gap-4 text-xs font-bold text-slate-500">
+                <a href="#tentang" class="hover:text-brand-500 transition">Tentang</a>
+                <a href="#keahlian" class="hover:text-brand-500 transition">Keahlian</a>
+                <a href="#portfolio" class="hover:text-brand-500 transition">Karya</a>
+                <a href="#kontak" class="hover:text-brand-500 transition">Kontak</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic Section -->
+    <script>
+        // DOM Elements
+        const customizerBtn = document.getElementById('customizer-btn');
+        const customizerPanel = document.getElementById('customizer-panel');
+        const closeCustomizer = document.getElementById('close-customizer');
+        const scrollTopBtn = document.getElementById('scroll-top-btn');
+        const mainHeader = document.getElementById('main-header');
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const toast = document.getElementById('toast');
+        const contactForm = document.getElementById('contact-form');
+
+        // Dynamic Input Elements
+        const inputName = document.getElementById('input-name');
+        const inputRole = document.getElementById('input-role');
+        const inputHeroDesc = document.getElementById('input-hero-desc');
+        const inputAvatar = document.getElementById('input-avatar');
+        const inputEmail = document.getElementById('input-email');
+        const inputLocation = document.getElementById('input-location');
+        const downloadBtn = document.getElementById('download-html-btn');
+
+        // Display Nodes To Be Dynamic
+        const navBrandName = document.getElementById('nav-brand-name');
+        const heroName = document.getElementById('hero-name');
+        const heroRole = document.getElementById('hero-role');
+        const heroDesc = document.getElementById('hero-desc');
+        const profileImg = document.getElementById('profile-img');
+        const contactEmailText = document.getElementById('contact-email-text');
+        const contactLocationText = document.getElementById('contact-location-text');
+        const socialEmailLink = document.getElementById('social-email-link');
+
+        // Set Current Year dynamically
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // 1. Customizer Toggle
+        customizerBtn.addEventListener('click', () => {
+            customizerPanel.classList.toggle('translate-x-full');
+        });
+        closeCustomizer.addEventListener('click', () => {
+            customizerPanel.classList.add('translate-x-full');
+        });
+
+        // 2. Dynamic Real-time Synchronizer
+        function updateLiveView() {
+            const cleanName = inputName.value.trim() || "Ellya Insyirah Azmidar";
+            const compactedName = cleanName.replace(/\s+/g, '').toUpperCase();
+
+            navBrandName.textContent = compactedName + " 🎀";
+            heroName.textContent = cleanName;
+            heroRole.textContent = inputRole.value.trim() || "Civil Engineering Student";
+            heroDesc.textContent = inputHeroDesc.value.trim() || "Deskripsi portofolio.";
+            
+            // Avatar update
+            if (inputAvatar.value.trim()) {
+                profileImg.src = inputAvatar.value.trim();
+            }
+
+            // Contact & Socials
+            const email = inputEmail.value.trim() || "ellyainsyirah16@gmail.com";
+            contactEmailText.textContent = email;
+            socialEmailLink.href = `mailto:${email}`;
+
+            contactLocationText.textContent = inputLocation.value.trim() || "Sinjai, Sulawesi Selatan";
+        }
+
+        // Add real-time input listeners to all inputs
+        [inputName, inputRole, inputHeroDesc, inputAvatar, inputEmail, inputLocation].forEach(element => {
+            element.addEventListener('input', updateLiveView);
+        });
+
+        // 3. Toast Notifications
+        function showToast(message, iconName) {
+            const toastMsg = document.getElementById('toast-message');
+            const toastIcon = document.getElementById('toast-icon');
+            toastMsg.textContent = message;
+            toastIcon.className = `fa-solid ${iconName}`;
+            
+            toast.style.transform = 'translateY(0)';
+            
+            setTimeout(() => {
+                toast.style.transform = 'translateY(-150%)';
+            }, 3500);
+        }
+
+        // Trigger welcome toast on load
+        window.addEventListener('load', () => {
+            showToast("Halo Ellya! Portofolio imutmu sudah siap diedit! 💕", "fa-gift");
+        });
+
+        // 4. Portfolio Filter Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Reset styling
+                filterBtns.forEach(b => {
+                    b.className = "filter-btn px-4 py-2 rounded-full text-xs font-bold tracking-wide bg-[#FFF5F6] text-slate-500 hover:bg-brand-100 hover:text-brand-600 border-2 border-brand-100";
+                });
+                
+                // Style clicked btn
+                btn.className = "filter-btn px-4 py-2 rounded-full text-xs font-bold tracking-wide bg-brand-50 text-brand-600 border-2 border-brand-500 shadow-sm";
+
+                const category = btn.getAttribute('data-category');
+                
+                projectCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 5. Form Submission Sim
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('form-name').value;
+            showToast(`Terima kasih ${name}! Surat ceriamu meluncur ke Ellya! 📬`, "fa-paper-plane");
+            contactForm.reset();
+        });
+
+        // 6. Navigation Scroll Behavior
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                mainHeader.classList.add('bg-[#FFF5F6]/90', 'backdrop-blur-md', 'shadow-md', 'border-b-2', 'border-brand-100');
+                scrollTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                mainHeader.classList.remove('bg-[#FFF5F6]/90', 'backdrop-blur-md', 'shadow-md', 'border-b-2', 'border-brand-100');
+                scrollTopBtn.classList.add('opacity-0', 'pointer-events-none');
+            }
+        });
+
+        // Mobile Burger Click
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 7. DOWNLOAD SELF-CONTAINED KAWAII WEB FILE
+        downloadBtn.addEventListener('click', () => {
+            const nameVal = inputName.value.trim() || "Ellya Insyirah Azmidar";
+            const roleVal = inputRole.value.trim() || "Civil Engineering Student | Construction Management & Visual Artist";
+            const descVal = inputHeroDesc.value.trim() || "Mahasiswi Manajemen Jasa Konstruksi PNUP.";
+            const avatarVal = inputAvatar.value.trim() || "webcam-toy-photo1.jpg";
+            const emailVal = inputEmail.value.trim() || "ellyainsyirah16@gmail.com";
+            const locationVal = inputLocation.value.trim() || "Sinjai, Sulawesi Selatan";
+
+            // Fully static, portable kawaii HTML structure
+            const generatedHTML = `<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Ceria - \${nameVal}</title>
+    <script src="https://cdn.tailwindcss.com"><\/script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Quicksand', 'sans-serif'], cute: ['Fredoka', 'sans-serif'] },
+                    colors: { brand: { 50: '#fff1f2', 100: '#ffe4e6', 200: '#fecdd3', 500: '#ff85a2', 600: '#f43f5e' } }
+                }
+            }
+        }
+    <\/script>
+    <style>
+        body { font-family: 'Fredoka', sans-serif; background-color: #FFF5F6; color: #334155; }
+        .kawaii-card { background: white; border: 3px solid #ffe4e6; box-shadow: 0 8px 0px #fecdd3; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .kawaii-card:hover { transform: translateY(-5px); box-shadow: 0 12px 0px #fda4af; border-color: #fda4af; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <header class="fixed top-0 left-0 w-full z-40 bg-[#FFF5F6]/90 border-b-2 border-brand-100 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold tracking-wider text-brand-600">\${nameVal.replace(/\\s+/g, '').toUpperCase()} 🎀</a>
+            <nav class="hidden md:flex items-center gap-6 text-sm font-bold">
+                <a href="#tentang" class="text-slate-600 hover:text-brand-500 transition">Tentang</a>
+                <a href="#keahlian" class="text-slate-600 hover:text-brand-500 transition">Keahlian</a>
+                <a href="#portfolio" class="text-slate-600 hover:text-brand-500 transition">Karya</a>
+                <a href="#kontak" class="text-slate-600 hover:text-brand-500 transition">Kontak</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="pt-32 pb-16 flex items-center min-h-screen">
+        <div class="max-w-7xl mx-auto px-6 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100 text-brand-600 text-xs font-bold uppercase">🎀 Mahasiswi Teknik Sipil</span>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-600">Hai, Aku <span class="text-pink-500">\${nameVal}</span> ✨</h1>
+                    <h2 class="text-base sm:text-lg font-bold text-slate-600 bg-brand-100/50 p-2 rounded-2xl inline-block">\${roleVal}</h2>
+                    <p class="text-slate-650 text-sm leading-relaxed">\${descVal}</p>
+                </div>
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative bg-white p-4 pb-12 rounded-xl shadow-2xl border-2 border-brand-100 rotate-2">
+                        <div class="w-64 h-64 sm:w-72 sm:h-72 overflow-hidden rounded-lg bg-slate-100 relative border-2 border-slate-200">
+                            <img src="\${avatarVal}" alt="Foto Profil" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute bottom-2.5 left-0 w-full text-center">
+                            <span class="text-sm font-bold text-brand-600 italic">✨ Ellya Insyirah ✨</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tentang" class="py-20 bg-white border-t-2 border-brand-100">
+        <div class="max-w-5xl mx-auto px-6 text-center space-y-6">
+            <h3 class="text-2xl font-bold text-brand-600">Tentang Aku 🌸</h3>
+            <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                Aku berasal dari **\${locationVal}**. Sebagai mahasiswa Teknik Sipil PNUP (D4 Manajemen Jasa Konstruksi), aku mengasah ketelitian merancang, matematika rekayasa, dan gambar isometrik 3D yang dipadukan dengan kesukaan menggambar bebas serta editing visual imut!
+            </p>
+        </div>
+    </section>
+
+    <section id="kontak" class="py-20 bg-[#FFF5F6] border-t-2 border-brand-100 text-center">
+        <div class="max-w-xl mx-auto px-6 space-y-4">
+            <h3 class="text-2xl font-bold text-brand-600">Mari Berteman! 💕</h3>
+            <p class="text-sm text-slate-650">Hubungi aku lewat email utama berikut:</p>
+            <div class="p-6 rounded-2xl bg-white border-2 border-brand-100">
+                <p class="text-xs text-slate-400 font-bold uppercase mb-1">Email</p>
+                <p class="font-bold text-brand-600 text-lg">\${emailVal}</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white py-12 text-center text-xs text-slate-400 border-t border-brand-100">
+        <p>&copy; ${new Date().getFullYear()} \${nameVal}. Dibuat dengan Cinta, Sakura, & Strawberry.</p>
+    </footer>
+</body>
+</html>`;
+
+            const element = document.createElement('a');
+            const file = new Blob([generatedHTML], {type: 'text/html'});
+            element.href = URL.createObjectURL(file);
+            element.download = `${nameVal.toLowerCase().replace(/\s+/g, '-')}-portfolio-imut.html`;
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+
+            showToast("Sukses Mengunduh Portofolio Imutmu! 🎀", "fa-gift");
+        });
+    </script>
+</body>
+</html>
